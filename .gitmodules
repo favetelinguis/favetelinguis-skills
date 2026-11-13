@@ -6,3 +6,7 @@
 	path = vendor/pstack
 	url = https://github.com/backnotprop/pstack.git
 	branch = main
+[submodule "vendor/addy"]
+	path = vendor/addy
+	url = https://github.com/addyosmani/agent-skills.git
+	branch = main

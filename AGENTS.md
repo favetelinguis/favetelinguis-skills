@@ -5,7 +5,7 @@ This repo holds personal skills and the selection of upstream skills that get in
 ## Layout
 
 - `skills/<name>/`: personal skills. This is the only place to write skills.
-- `vendor/<source>/`: upstream skill repos as git submodules, each pinned to a commit. Currently `vendor/matt` (`mattpocock/skills`) and `vendor/pstack` (`backnotprop/pstack`, the standalone mirror of `cursor/plugins/pstack`).
+- `vendor/<source>/`: upstream skill repos as git submodules, each pinned to a commit. Currently `vendor/matt` (`mattpocock/skills`), `vendor/pstack` (`backnotprop/pstack`, the standalone mirror of `cursor/plugins/pstack`), and `vendor/addy` (`addyosmani/agent-skills`).
 - `skills.conf`: which skills get linked, one `<source>:<path>` entry per line (`self:skills/explain-diff`, `matt:skills/engineering/tdd`, `pstack:skills/unslop`). `self` is this repo; any other source is `vendor/<source>`.
 - `link-skills.sh`: links every `skills.conf` entry into `~/.agents/skills`, and the executables in its `scripts` array from `scripts/` into `~/.local/bin`.
 - `update-vendor.sh`: moves submodules to the newest upstream commit and shows what changed.

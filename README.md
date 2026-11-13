@@ -3,7 +3,8 @@
 Personal skills, plus the upstream skills they build on, installed into `~/.agents/skills` from one checkout. Upstreams are git submodules under `vendor/`:
 
 - **[matt](https://github.com/mattpocock/skills)** (`vendor/matt`): Matt Pocock's `engineering/` and `productivity/` skills.
-- **[pstack](https://github.com/backnotprop/pstack)** (`vendor/pstack`): standalone mirror of [cursor/plugins/pstack](https://github.com/cursor/plugins/tree/main/pstack). Only `unslop` is linked.
+- **[pstack](https://github.com/backnotprop/pstack)** (`vendor/pstack`): standalone mirror of [cursor/plugins/pstack](https://github.com/cursor/plugins/tree/main/pstack). No skills are linked from it right now (see `skills.conf`).
+- **[addy](https://github.com/addyosmani/agent-skills)** (`vendor/addy`): Addy Osmani's agent skills. No skills are linked from it right now (see `skills.conf`).
 
 [AGENTS.md](./AGENTS.md) covers the layout, how to write personal skills, and how to update or add submodules.
 

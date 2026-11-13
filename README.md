@@ -67,3 +67,7 @@ mise prune     # remove installed versions that the config no longer uses
 `mise prune` removes every installed tool that is not in the config. Run `mise prune --dry-run` first to see what it would remove.
 
 The Herdr shortcut `prefix+f` (cmd 9) opens an `abacus` tab in the active pane's folder. If the tab already exists, it focuses that tab instead.
+
+## License
+
+[MIT](./LICENSE). Some personal skills are adapted from [mattpocock/skills](https://github.com/mattpocock/skills) (`production-readiness-check` from `code-review`, `setup-matt-skills-with-beads` from `setup-matt-pocock-skills`), so the license carries Matt Pocock's copyright notice too. The submodules under `vendor/` are not part of this repo and keep their own licenses: `vendor/matt` (MIT, Matt Pocock) and `vendor/pstack` (MIT, Lauren Tan).

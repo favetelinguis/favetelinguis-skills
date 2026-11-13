@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Setup Matt Pocock's Skills with beads
 
-Specializes `engineering/setup-matt-pocock-skills`.
+Specializes `matt:skills/engineering/setup-matt-pocock-skills`.
 
 The upstream setup writes `docs/agents/*.md` and an `## Agent skills` block into the repo. Here every piece of configuration lives outside the repo instead:
 

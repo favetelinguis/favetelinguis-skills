@@ -1,15 +1,20 @@
-# Personal
+# favetelinguis skills
 
-Personal skills that complement or customize Matt's `engineering/` and `productivity/` skills.
+Personal skills, plus the upstream skills they build on, installed into `~/.agents/skills` from one checkout. Upstreams are git submodules under `vendor/`:
 
-Matt's upstream skills own the core development loop (`grill-with-docs` -> `to-spec` -> `to-tickets` -> `implement` / `tdd` -> `code-review` -> `retro`). Most skills in this folder fill in personal tooling, production operations, and infrastructure gaps. `production-readiness-check` is an independent copy of upstream `code-review` with Production and Integration axes, used only by `explain-diff`:
+- **[matt](https://github.com/mattpocock/skills)** (`vendor/matt`): Matt Pocock's `engineering/` and `productivity/` skills.
+- **[pstack](https://github.com/backnotprop/pstack)** (`vendor/pstack`): standalone mirror of [cursor/plugins/pstack](https://github.com/cursor/plugins/tree/main/pstack). Only `unslop` is linked.
 
-- **[production-readiness-check](./production-readiness-check/SKILL.md)**: The blind review `explain-diff` runs, on parallel axes: documented standards, the originating spec, production readiness (via `infra-and-deploy` and `observability`), and, when the diff touches an external integration, integration resilience (via `external-integration-design`).
-- **[explain-diff](./explain-diff/SKILL.md)**: Explain a diff or PR in your own words, get grilled until your model matches the code, and leave with review comments (complements `code-review` and `grilling`).
-- **[external-integration-design](./external-integration-design/SKILL.md)**: Design resilient integrations with external systems and providers (called by `production-readiness-check`).
-- **[infra-and-deploy](./infra-and-deploy/SKILL.md)**: Trace app-to-infrastructure chains across Helm, Kubernetes, AWS, Azure, Terraform, Bicep, Docker, and CI/CD, and surface what only a live deploy can verify (called by `production-readiness-check`).
-- **[observability](./observability/SKILL.md)**: Instrument production code with structured logging, RED and USE metrics, OpenTelemetry tracing, symptom-based alerts, and runbooks (called by `production-readiness-check`).
-- **[setup-matt-skills-with-beads](./setup-matt-skills-with-beads/SKILL.md)**: Configure a repo for the engineering skills with a personal beads_rust (`br`) tracker kept out of git, wired through one block in the global `AGENTS.md` (replaces `setup-matt-pocock-skills`).
+[AGENTS.md](./AGENTS.md) covers the layout, how to write personal skills, and how to update or add submodules.
+
+Matt's upstream skills own the core development loop (`grill-with-docs` -> `to-spec` -> `to-tickets` -> `implement` / `tdd` -> `code-review` -> `retro`). Most skills in [skills/](./skills) fill in personal tooling, production operations, and infrastructure gaps. `production-readiness-check` is an independent copy of upstream `code-review` with Production and Integration axes, used only by `explain-diff`:
+
+- **[production-readiness-check](./skills/production-readiness-check/SKILL.md)**: The blind review `explain-diff` runs, on parallel axes: documented standards, the originating spec, production readiness (via `infra-and-deploy` and `observability`), and, when the diff touches an external integration, integration resilience (via `external-integration-design`).
+- **[explain-diff](./skills/explain-diff/SKILL.md)**: Explain a diff or PR in your own words, get grilled until your model matches the code, and leave with review comments (complements `code-review` and `grilling`).
+- **[external-integration-design](./skills/external-integration-design/SKILL.md)**: Design resilient integrations with external systems and providers (called by `production-readiness-check`).
+- **[infra-and-deploy](./skills/infra-and-deploy/SKILL.md)**: Trace app-to-infrastructure chains across Helm, Kubernetes, AWS, Azure, Terraform, Bicep, Docker, and CI/CD, and surface what only a live deploy can verify (called by `production-readiness-check`).
+- **[observability](./skills/observability/SKILL.md)**: Instrument production code with structured logging, RED and USE metrics, OpenTelemetry tracing, symptom-based alerts, and runbooks (called by `production-readiness-check`).
+- **[setup-matt-skills-with-beads](./skills/setup-matt-skills-with-beads/SKILL.md)**: Configure a repo for the engineering skills with a personal beads_rust (`br`) tracker kept out of git, wired through one block in the global `AGENTS.md` (replaces `setup-matt-pocock-skills`).
 
 ## How they fit into Matt's flow
 
@@ -26,15 +31,17 @@ The implementer and its per-change review (`implement`, `tdd`, `code-review`) sh
 
 ## Linking skills
 
-[link-skills.sh](./link-skills.sh) links the selected engineering, productivity, and personal skills into `~/.agents/skills`.
-
 ```bash
-bash skills/favetelinguis/link-skills.sh
+git clone --recurse-submodules git@github.com:favetelinguis/favetelinguis-skills.git
+cd favetelinguis-skills
+./link-skills.sh
 ```
 
-Edit the `skills` list in the script to choose what is installed. All 30 selected skills are included. Remove or comment out an entry and rerun to unlink it. New skills must be added to the list explicitly.
+[link-skills.sh](./link-skills.sh) links every entry in [skills.conf](./skills.conf) into `~/.agents/skills`. Entries are `<source>:<path>`, for example `matt:skills/engineering/tdd`, `pstack:skills/unslop`, or `self:skills/explain-diff`. Remove or comment out an entry and rerun to unlink it. New skills must be added to the list explicitly.
 
-Running the script repeatedly is safe. It replaces selected symlinks, refuses to overwrite real files or directories, and only removes deselected links pointing to this checkout. Unrelated skills stay installed.
+Running the script repeatedly is safe. It replaces selected symlinks, refuses to overwrite real files or directories, refuses two entries that would link under the same name, and only removes deselected links pointing to this checkout. Unrelated skills stay installed.
+
+Upstreams only change when you bump them: run [update-vendor.sh](./update-vendor.sh), review what changed, and commit the new submodule commits. See [AGENTS.md](./AGENTS.md#submodules).
 
 The same script links the executables listed in its `scripts` array from [scripts/](./scripts) into `~/.local/bin`. On macOS, add `~/.local/bin` to `PATH`; the script prints a note when it is missing.
 

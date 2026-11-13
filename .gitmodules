@@ -1,0 +1,8 @@
+[submodule "vendor/matt"]
+	path = vendor/matt
+	url = https://github.com/mattpocock/skills.git
+	branch = main
+[submodule "vendor/pstack"]
+	path = vendor/pstack
+	url = https://github.com/backnotprop/pstack.git
+	branch = main

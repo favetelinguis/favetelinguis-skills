@@ -3,7 +3,7 @@ name: production-readiness-check
 description: "Multi-axis diff review (Standards, Spec, Production, Integration) that explain-diff's blind reviewer runs. Use when explain-diff dispatches its blind reviewer."
 ---
 
-Specializes engineering/code-review.
+Specializes `matt:skills/engineering/code-review`.
 
 Multi-axis review of the diff between `HEAD` and a fixed point the user supplies:
 

@@ -45,4 +45,4 @@ Done when `setup.sh apply` prints its `verified:` line and `setup.sh check` repo
 
 ### 4. Done
 
-Tell the user the repo is ready: `triage`, `to-spec`, `to-tickets`, `implement`, `implement-spec`, `wayfinder`, and `code-review` now read the tracker through the global block, and `bv` opens the same board. The tracker rules live in `issue-tracker-beads.md` in this skill folder, so editing that file changes every repo at once. Re-running this skill is only needed for a new repo or a new computer's global context file.
+Tell the user the repo is ready: `triage`, `to-spec`, `to-tickets`, `implement`, `implement-spec`, `wayfinder`, `goal`, and `code-review` now read the tracker through the global block, and `bv` opens the same board. The tracker rules live in `issue-tracker-beads.md` in this skill folder, so editing that file changes every repo at once. Re-running this skill is only needed for a new repo or a new computer's global context file.

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Goal"
+  short_description: "Find the real goal behind an ask before any design"
+policy:
+  allow_implicit_invocation: false

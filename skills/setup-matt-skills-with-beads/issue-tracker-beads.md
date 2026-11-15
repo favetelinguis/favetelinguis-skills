@@ -27,7 +27,7 @@ Work closes through `br close` alone: a PR or merge never closes a `br` issue, s
 
 Create a `br` issue:
 
-- **A spec** (`/to-spec`): `br create "<spec title>" -t epic -l ready-for-agent --silent --description-file -` with the spec as the description. When the spec comes out of a wayfinder map, add `--deps discovered-from:<map>`.
+- **A spec** (`/to-spec`): `br create "<spec title>" -t epic -l ready-for-agent --silent --description-file -` with the spec as the description. When the spec comes out of a wayfinder map or a goal brief, add `--deps discovered-from:<map or brief>`.
 - **Tickets** (`/to-tickets`): create them in dependency order, blockers first, capturing each id from `--silent`. Wire blocking natively with `--deps blocks:<blocker>` and leave the body's `## Blocked by` section out. Put the `## Acceptance criteria` checklist in `--acceptance-criteria` rather than the description. When the source was an existing issue, pass `--parent <source>` and `-p <source's priority>`. Type each ticket per **Issue types**.
 
 ## When a skill says "fetch the relevant ticket"
@@ -38,13 +38,25 @@ Run `br show <id> --json`, then read its acceptance criteria and comments alongs
 
 Used by `/wayfinder`. The **map** is an epic with **child** issues as tickets.
 
-- **Map**: `br create "<map title>" -t epic -l wayfinder:map --silent --description-file -`, holding the Destination / Notes / Decisions so far / Not yet specified / Out of scope body. Rewrite the body with `br update <map> --description-file -`, adding `--force` when the new body is under half the old length.
+- **Map**: `br create "<map title>" -t epic -l wayfinder:map --silent --description-file -`, holding the Destination / Notes / Decisions so far / Not yet specified / Out of scope body. When the map is charted from a goal brief, add `--deps discovered-from:<brief>`. Rewrite the body with `br update <map> --description-file -`, adding `--force` when the new body is under half the old length.
 - **Child ticket**: `br create "<question title>" -t task -l wayfinder:<type> --parent <map> --silent --description-file -`, where `<type>` is `research`, `prototype`, `grilling`, or `task`. A ticket surfaced while resolving ticket T also gets `--deps discovered-from:T`.
 - **Blocking**: see **Blocking** under Conventions. Wire edges in the second pass with `br dep add <blocked> <blocker>`.
 - **Frontier query**: `br ready --parent <map> --unassigned --sort oldest --json`. It already drops blocked, claimed, and deferred tickets; first in the list wins.
 - **Claim**: `br update <ticket> --claim`, the session's first write.
 - **Resolve**: `br close <ticket> --transition-comment "<answer>" --reason "<one-line gist>" --suggest-next`, then append `- [<ticket title>](<ticket id>): <one-line gist>` under the map's `## Decisions so far`. Set the ticket's primary asset (research findings, prototype) as its `--external-ref` (see **Artifacts**).
 - **Rule out of scope**: `br close <ticket> --reason "Out of scope: <why>"`, then add one line under the map's `## Out of scope`.
+
+## Goal operations
+
+Used by `/goal`. The **goal brief** is a single epic with no children.
+
+- **Brief**: `br create "Goal: <title>" -t epic -l goal:brief --silent --description-file -`, holding the body from the goal skill's `GOAL-BRIEF-FORMAT.md`. `goal:brief` is the only label a brief carries, never a triage label.
+- **Source**: when the ask is a `br` issue, add `--deps discovered-from:<source>` to the create. When the ask lives on a team tracker, set that URL as the brief's `--external-ref`.
+- **Assets**: the research findings file is the brief's `--external-ref` (see **Artifacts**), unless a team tracker URL already holds that field; then it goes in a comment, `br comments add <brief> -m "Asset: <locator>"`, like every further asset (a questionnaire file, a prototype).
+- **Find a brief**: `br list -l goal:brief --json` lists the open ones; add `-a` for settled ones.
+- **Rewrite the body**: `br update <brief> --description-file -`, adding `--force` when the new body is under half the old length.
+- **Waiting on theirs questions**: leave the brief open. Record each answer that arrives as a comment, `br comments add <brief> -m "Answer from <owner>: ..."`, so a resumed `/goal` session finds it.
+- **Settle**: `br close <brief> --transition-comment "<goal statement and chosen route>" --reason "<one-line gist>"`. For a do-nothing or reuse outcome, start the reason with `No build:`.
 
 ## Triage
 
@@ -58,7 +70,7 @@ Used by `/triage`. Role names map to label strings through `triage-labels.md`.
 
 The three "needs attention" buckets, oldest first:
 
-1. **Unlabeled**: `br list --sort created_at -r --json` with one `--exclude-label` for each of `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`, `wayfinder:map`, `wayfinder:research`, `wayfinder:prototype`, `wayfinder:grilling`, `wayfinder:task`.
+1. **Unlabeled**: `br list --sort created_at -r --json` with one `--exclude-label` for each of `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`, `goal:brief`, `wayfinder:map`, `wayfinder:research`, `wayfinder:prototype`, `wayfinder:grilling`, `wayfinder:task`.
 2. **`needs-triage`**: `br list -l needs-triage --sort created_at -r --json`.
 3. **`needs-info` with activity since the last triage notes**: `br list -l needs-info --sort created_at -r --json`, then compare each issue's comments against its latest `## Triage Notes` comment.
 
@@ -74,7 +86,7 @@ Use exactly these five types. `br` accepts any string for `-t`, so this list is 
 | `feature` | Triage's `enhancement` category                                                                        |
 | `task`    | A `/to-tickets` vertical slice; every wayfinder ticket (its `wayfinder:<type>` label carries the kind) |
 | `chore`   | Expand-contract and mechanical refactor tickets; upkeep that changes no behaviour                      |
-| `epic`    | A spec, or a wayfinder map (label `wayfinder:map`)                                                     |
+| `epic`    | A spec, a wayfinder map (label `wayfinder:map`), or a goal brief (label `goal:brief`)                  |
 
 ### Links
 
@@ -97,6 +109,7 @@ Use these six dependency types and leave the rest unused:
 When you find work outside the issue you are working on (call it X), file it and stay on X:
 
 - **While implementing, testing, diagnosing, or reviewing X**: `br create "<title>" -t <bug|task|chore> -l needs-triage --deps discovered-from:X --silent --description-file -`. Tell the user the new issue's title and id.
+- **While running `/goal` on brief X**: write it under the brief's open questions or out of scope; file nothing, since the design flow turns open questions into tickets.
 - **While resolving wayfinder ticket X**: file it as a child ticket per **Wayfinding operations**, with `--parent <map> --deps discovered-from:X`. Fog that X's answer graduates into tickets gets the same link.
 
 ### Artifacts

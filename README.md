@@ -10,6 +10,7 @@ Personal skills, plus the upstream skills they build on, installed into `~/.agen
 
 Matt's upstream skills own the core development loop (`grill-with-docs` -> `to-spec` -> `to-tickets` -> `implement` / `tdd` -> `code-review` -> `retro`). The personal skills in [skills/](./skills) fill in personal tooling around it. Installed:
 
+- **[goal](./skills/goal/SKILL.md)**: Before any design, find the real goal behind an ask with goal-oriented RE (5 Whys, KAOS goal patterns, OR-refinement, obstacle analysis), research existing work and routes, and publish a goal brief on the tracker (runs before `grill-with-docs` or `wayfinder`).
 - **[explain-diff](./skills/explain-diff/SKILL.md)**: Explain a diff or PR in your own words, get grilled until your model matches the code, and leave with review comments. Its blind reviewer runs `code-review` (complements `code-review` and `grilling`).
 - **[setup-matt-skills-with-beads](./skills/setup-matt-skills-with-beads/SKILL.md)**: Configure a repo for the engineering skills with a personal beads_rust (`br`) tracker kept out of git, wired through one block in the global `AGENTS.md` (replaces `setup-matt-pocock-skills`).
 
@@ -25,6 +26,7 @@ Parked (kept in the repo, commented out in `skills.conf`, not installed). They w
 | Upstream stage | Matt's skills | How `favetelinguis` complements it |
 |---|---|---|
 | **Setup & Tracker** | `setup-matt-pocock-skills`, `triage`, `wayfinder` | `setup-matt-skills-with-beads` replaces upstream setup: a personal `.beads/` excluded through `.git/info/exclude`, and a beads tracker doc adding `discovered-from`, `--external-ref`, native acceptance criteria, priority, and defer |
+| **Goal** | (none) | `goal` runs first: it turns a raw ask into a goal brief (goal, chosen route, obstacles, open questions with owners) that `grill-with-docs`, `wayfinder`, or `to-questionnaire` picks up |
 | **Spec & Slices** | `grill-with-docs`, `to-spec`, `to-tickets` | Unchanged: specs and tickets stay focused on behaviour |
 | **Build** | `implement`, `tdd`, `codebase-design`, `wizard` | Unchanged: the implementer stays lean and focused on code |
 | **Review & Diagnose** | `code-review`, `diagnosing-bugs` | `code-review` stays the per-change code review; `explain-diff` runs it once more over the whole change, blind, and grills you until your model of the change matches the code |

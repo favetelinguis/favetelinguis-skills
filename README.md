@@ -10,6 +10,7 @@ Personal skills, plus the upstream skills they build on, installed into `~/.agen
 
 Matt's upstream skills own the core development loop (`grill-with-docs` -> `to-spec` -> `to-tickets` -> `implement` / `tdd` -> `code-review` -> `retro`). The personal skills in [skills/](./skills) fill in personal tooling around it. Installed:
 
+- **[dotfiles](./skills/dotfiles/SKILL.md)**: Install the bundled default Emacs configuration on this machine.
 - **[goal](./skills/goal/SKILL.md)**: Before any design, find the real goal behind an ask with goal-oriented RE (5 Whys, KAOS goal patterns, OR-refinement, obstacle analysis), research existing work and routes, and publish a goal brief on the tracker (runs before `grill-with-docs` or `wayfinder`).
 - **[explain-diff](./skills/explain-diff/SKILL.md)**: Explain a diff or PR in your own words, get grilled until your model matches the code, and leave with review comments. Its blind reviewer runs `code-review` (complements `code-review` and `grilling`).
 - **[setup-matt-skills-with-beads](./skills/setup-matt-skills-with-beads/SKILL.md)**: Configure a repo for the engineering skills with a personal beads_rust (`br`) tracker kept out of git, wired through one block in the global `AGENTS.md` (replaces `setup-matt-pocock-skills`).

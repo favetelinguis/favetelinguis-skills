@@ -1,0 +1,5 @@
+interface:
+  display_name: "Dotfiles"
+  short_description: "Install personal dotfiles"
+policy:
+  allow_implicit_invocation: false

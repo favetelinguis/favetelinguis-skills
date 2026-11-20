@@ -10,6 +10,7 @@ This repo holds personal skills and the selection of upstream skills that get in
 - `link-skills.sh`: links every `skills.conf` entry into `~/.agents/skills`, and the executables in its `scripts` array from `scripts/` into `~/.local/bin`.
 - `update-vendor.sh`: moves submodules to the newest upstream commit and shows what changed.
 - `scripts/`: personal executables (`wt-review`).
+- `tests/`: fixtures for trying skills end to end (`tests/kb-dry-run/` builds a synthetic Home Repo for the `kb-*` skills).
 
 **Ownership.** Everything under `vendor/` is upstream and read-only: never edit, commit, or stage files inside a submodule. When a personal skill needs an upstream skill to behave differently, carry that change in the personal skill (see below), and leave the upstream file as the submodule delivers it.
 

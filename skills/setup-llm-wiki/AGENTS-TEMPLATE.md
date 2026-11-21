@@ -33,9 +33,11 @@ Ingest one source at a time with the user by default; batch only when requested.
 ### Query
 
 1. Read the index, then the relevant wiki pages. Consult raw sources when needed to verify claims or fill gaps. Answer the user's question with citations to the supporting pages and sources, distinguishing gaps and uncertainty from supported conclusions.
-2. Append a query entry to the log. If the answer contains a useful comparison, analysis, or connection, offer to file it as a page or an update to an existing page. On approval, write it with citations and links, update the index, and record the change in the log.
+2. Append a query entry to the log. If the answer contains a useful comparison, analysis, or connection, offer to file it as a page or an update to an existing page.
+3. Before filing, trace every factual claim in the proposed page to its raw sources and verify that they support it. Cite those sources at the claims and distinguish inferences, disagreements, and gaps. When a source cannot be checked or a claim is unsupported, tell the user and label it unverified or leave it out.
+4. Show the proposed page or update to the user and ask whether it is correct. Incorporate their corrections, verify any changed claims against the raw sources, and show the revised proposal for approval. If a correction lacks supporting evidence, ask for a source or label it as the user's unverified observation; do not present it as a verified source claim. Write only the approved version, update its links and the index, and append a query entry recording the filing. If the user declines, leave the content pages unchanged.
 
-Done when the answer is traceable to evidence, gaps are named, and any approved filing is integrated.
+Done when the answer is traceable to evidence, gaps are named, and any filing has been checked, reviewed, approved, and integrated.
 
 ### Lint
 

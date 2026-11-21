@@ -40,6 +40,6 @@ Done when every agreed path exists, the instruction file contains the complete w
 
 ## 4. Verify and hand off
 
-Read the resulting instruction section, pointers, index, and log back. Check that the workflow is discoverable from the agreed session start, each path resolves to the intended location, and a fresh agent can ingest a source, answer with citations, file an answer, and lint without this skill. Report any incomplete or conflicting part and fix it before finishing.
+Read the resulting instruction section, pointers, index, and log back. Check that the workflow is discoverable from the agreed session start, each path resolves to the intended location, and a fresh agent can ingest a source, answer with citations, review and verify an answer before filing, and lint without this skill. Report any incomplete or conflicting part and fix it before finishing.
 
 Show the user the files created or changed and any sources copied. Explain how to ask the agent to ingest a source, query the wiki, and lint it. Git, Obsidian, and a search tool such as `qmd` are optional; install or configure none without the user's request. Commit or push only if the user explicitly asks.

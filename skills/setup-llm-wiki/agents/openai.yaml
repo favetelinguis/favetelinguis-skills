@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup LLM Wiki"
+  short_description: "Set up an agent-maintained LLM wiki"
+policy:
+  allow_implicit_invocation: false

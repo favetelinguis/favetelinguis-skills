@@ -1,5 +1,0 @@
-interface:
-  display_name: "KB init"
-  short_description: "Set up a Purpose-focused knowledge base in the Home Repo"
-policy:
-  allow_implicit_invocation: false

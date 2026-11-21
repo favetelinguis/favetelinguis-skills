@@ -1,5 +1,0 @@
-interface:
-  display_name: "KB lint"
-  short_description: "Health-check the knowledge base against its Purpose"
-policy:
-  allow_implicit_invocation: false

@@ -13,11 +13,7 @@ Matt's upstream skills own the core development loop (`grill-with-docs` -> `to-s
 - **[dotfiles](./skills/dotfiles/SKILL.md)**: Install the bundled default Emacs configuration on this machine.
 - **[goal](./skills/goal/SKILL.md)**: Before any design, find the real goal behind an ask with goal-oriented RE (5 Whys, KAOS goal patterns, OR-refinement, obstacle analysis), research existing work and routes, and publish a goal brief on the tracker (runs before `grill-with-docs` or `wayfinder`).
 - **[explain-diff](./skills/explain-diff/SKILL.md)**: Explain a diff or PR in your own words, get grilled until your model matches the code, and leave with review comments. Its blind reviewer runs `code-review` (complements `code-review` and `grilling`).
-- **[ask-about-kb](./skills/ask-about-kb/SKILL.md)**: Ask how to do something with the `kb-*` skills or how they work; a router modelled on `ask-matt`, answering from the skills and the Home Repo's own `kb/` files.
-- **[kb](./skills/kb/SKILL.md)**: Conventions of the Home Repo knowledge base in `kb/` (layout, dated and cited claims, pages, index, log, open questions), and answering from it with citations. Model-invoked; the other `kb-*` skills load it.
-- **[kb-init](./skills/kb-init/SKILL.md)**: Set up a knowledge base in the current Home Repo: a fixed Purpose in `AGENTS.md`, settings in `kb/SCHEMA.md`, and an empty `kb/`.
-- **[kb-ingest](./skills/kb-ingest/SKILL.md)**: Clean, triage, extract, and reduce sources into the knowledge base: bulk (rubric calibrated on a sample, cheap-model triage, skip audit, snowballing map, approved topics), one source at a time, or resolving open questions from outside sources.
-- **[kb-lint](./skills/kb-lint/SKILL.md)**: Health-check the knowledge base (mechanical script plus a semantic read per hub) against its Purpose, and fix what you pick.
+- **[setup-llm-wiki](./skills/setup-llm-wiki/SKILL.md)**: Set up Karpathy's LLM wiki pattern with raw sources, a maintained wiki, and self-contained agent instructions.
 - **[setup-matt-skills-with-beads](./skills/setup-matt-skills-with-beads/SKILL.md)**: Configure a repo for the engineering skills with a personal beads_rust (`br`) tracker kept out of git, wired through one block in the global `AGENTS.md` (replaces `setup-matt-pocock-skills`).
 
 Parked (kept in the repo, commented out in `skills.conf`, not installed). They were a production check that `explain-diff` used to run; nothing calls them now, and their descriptions still assume that wiring, so update the descriptions before linking any of them again:

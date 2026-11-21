@@ -1,5 +1,0 @@
-interface:
-  display_name: "Ask about KB"
-  short_description: "How to do things with the knowledge base skills, and how they work"
-policy:
-  allow_implicit_invocation: false

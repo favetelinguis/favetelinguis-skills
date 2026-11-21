@@ -1,5 +1,0 @@
-interface:
-  display_name: "KB ingest"
-  short_description: "Ingest sources into the knowledge base, in bulk or one at a time"
-policy:
-  allow_implicit_invocation: false
